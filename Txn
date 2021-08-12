@@ -1,0 +1,13 @@
+Código de transacción  YAPP
+Paquete                $TMP
+
+
+ Texto transacción     after deploy app
+ Programa              Y_DEPLOY_APP
+ Imagen de selección   1000
+ Inicio con variante
+ Objeto autorización
+
+
+
+

@@ -1,0 +1,27 @@
+*&---------------------------------------------------------------------*
+*& Report Y_DEPLOY_APP
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+report y_deploy_app.
+
+parameters:
+p_app type c length 40 matchcode object y_app_deploy.
+
+start-of-selection.
+*O2APPLT
+*SELECT * FROM o2appl INTO TABLE lt_appl WHERE applclas = c_ui5_bsp_app_clsname.
+  submit /ui2/delete_cache_after_imp and return.
+  submit /ui2/invalidate_client_caches and return.
+  data submitab type standard table of  rsparams.
+  submit /ui5/app_index_calculate with p_all = ''
+                                  with p_distl = ''
+                                  with p_all_a = ''
+                                  with p_all_d = 'X'
+                                  with p_exp_h = 24
+                                  with p_exp_m = 0
+                                  with p_repo = p_app and return.
+*
+* /ui2/invalidate_client_caches
+*  caufv–aufnr,
+*caufv–werks,
